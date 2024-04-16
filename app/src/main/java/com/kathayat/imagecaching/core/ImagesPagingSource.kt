@@ -25,9 +25,9 @@ class ImagesPagingSource @Inject constructor(
                 perpage = 20
             )
             LoadResult.Page(
-                data = images.results!!,
-                prevKey = if (currentPage == 1) null else currentPage - 1,
-                nextKey = if (images.results.isEmpty()) null else images.page!! + 1
+                data = images.body()!!,
+                prevKey = if (currentPage == 1) null else currentPage.minus(1),
+                nextKey = if (images.body()!!.isEmpty()) null else currentPage.plus(1)
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)

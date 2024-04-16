@@ -1,7 +1,7 @@
 package com.kathayat.imagecaching.data
 
-import com.kathayat.imagecaching.network.ResponseDto
 import com.kathayat.imagecaching.network.remote.ImagesDto
+import retrofit2.Response
 
 interface ImageRemoteDataSource {
 
@@ -9,7 +9,7 @@ interface ImageRemoteDataSource {
         apiKey: String,
         pageNumber: Int,
         perpage:Int
-    ): ResponseDto<ImagesDto>
+    ): Response<ImagesDto>
 
 
 }

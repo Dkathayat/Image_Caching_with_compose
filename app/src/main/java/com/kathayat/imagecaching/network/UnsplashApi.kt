@@ -1,6 +1,7 @@
 package com.kathayat.imagecaching.network
 
 import com.kathayat.imagecaching.network.remote.ImagesDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,6 +18,6 @@ interface UnsplashApi {
         @Query("per_page") perPage:Int,
         @Query("client_id") clientId:String,
         @Query("page") page:Int
-    ): ResponseDto<ImagesDto>
+    ): Response<ImagesDto>
 
 }

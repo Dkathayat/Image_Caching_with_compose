@@ -1,8 +1,8 @@
 package com.kathayat.imagecaching.data
 
-import com.kathayat.imagecaching.network.ResponseDto
 import com.kathayat.imagecaching.network.UnsplashApi
 import com.kathayat.imagecaching.network.remote.ImagesDto
+import retrofit2.Response
 import javax.inject.Inject
 
 class ImagesRemoteDataSourceImpl @Inject constructor(
@@ -12,7 +12,7 @@ class ImagesRemoteDataSourceImpl @Inject constructor(
         apiKey: String,
         pageNumber: Int,
         perpage: Int
-    ): ResponseDto<ImagesDto> {
+    ): Response<ImagesDto> {
         return api.getPhotos(perpage,apiKey,pageNumber)
     }
 
