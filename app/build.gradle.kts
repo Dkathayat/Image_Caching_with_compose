@@ -77,12 +77,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    //kapt("com.google.dagger:hilt-compiler:2.51.1")
-    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
-    kapt ("androidx.hilt:hilt-compiler:1.2.0")
-    //annotationProcessor("com.google.dagger:hilt-android-compiler:2.46.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+//    implementation("com.google.dagger:hilt-android:2.49")
+//    //kapt("com.google.dagger:hilt-compiler:2.51.1")
+//    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
+//    //kapt ("androidx.hilt:hilt-compiler:1.2.0")
+//    annotationProcessor("com.google.dagger:hilt-android-compiler:2.51.1")
+//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")  2.46.1
+    implementation("com.google.dagger:hilt-android:2.46.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.46.1")
+    kapt ("androidx.hilt:hilt-compiler:1.0.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
 
     // Paging
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
@@ -92,5 +96,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 }
