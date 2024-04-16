@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Image Caching</string>
+    <string name="strRetry">Retry</string>
+    <string name="strFetchingDataFromServer">Fetching data from server</string>
+</resources>
