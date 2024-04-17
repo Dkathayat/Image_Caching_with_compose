@@ -1,7 +1,8 @@
 package com.kathayat.imagecaching.ui.presention
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,7 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 import com.kathayat.imagecaching.network.remote.Urls
 import com.kathayat.imagecaching.ui.theme.ImageCachingTheme
 
@@ -24,16 +25,20 @@ fun ImageItem(urls: Urls) {
         modifier = Modifier.height(250.dp).width(200.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = rememberAsyncImagePainter(urls),
+        AsyncImage(
+           model = urls.regular,
             modifier = Modifier.size(200.dp)
                 .padding(20.dp)
                 .clip(RoundedCornerShape(10)),
-            contentDescription = urls.raw,
-            contentScale = ContentScale.Crop
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds
         )
     }
+}
 
+@Composable
+fun RandomImages(urls: Urls){
+    Box(modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(10.dp)))
 }
 
 

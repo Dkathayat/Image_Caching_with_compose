@@ -1,7 +1,6 @@
 package com.kathayat.imagecaching.ui.presention
 
 import android.util.Log
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,9 +27,6 @@ fun ImageHomeScreen(
 ){
     val imagesPagingItems: LazyPagingItems<ImagesDtoItem> = viewModel.imagesState.collectAsLazyPagingItems()
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize(),
-        horizontalArrangement = Arrangement.Center,
-        verticalArrangement = Arrangement.Center,
 
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
