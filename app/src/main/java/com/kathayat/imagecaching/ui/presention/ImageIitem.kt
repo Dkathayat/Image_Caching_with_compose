@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -27,7 +26,7 @@ fun ImageItem(urls: Urls) {
     ) {
         AsyncImage(
            model = urls.regular,
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier.fillMaxSize()
                 .padding(20.dp)
                 .clip(RoundedCornerShape(10)),
             contentDescription = null,
