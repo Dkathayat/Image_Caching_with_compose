@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kathayat.imagecaching.ui.presention.ImageHomeScreen
+import com.kathayat.imagecaching.ui.presention.InitilizeHomeScreen
 import com.kathayat.imagecaching.ui.theme.ImageCachingTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ImageHomeScreen()
+                    InitilizeHomeScreen()
                 }
             }
         }

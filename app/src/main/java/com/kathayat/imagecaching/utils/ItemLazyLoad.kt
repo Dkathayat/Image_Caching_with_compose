@@ -1,8 +1,8 @@
 package com.kathayat.imagecaching.utils
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -37,12 +37,14 @@ fun PageLoader(modifier: Modifier = Modifier) {
 
 @Composable
 fun LoadingNextPageItem(modifier: Modifier) {
-    CircularProgressIndicator(
+    Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(10.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
-    )
+            .padding(10.dp),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        CircularProgressIndicator(Modifier.wrapContentWidth(Alignment.CenterHorizontally))
+    }
 }
 
 @Composable
@@ -51,16 +53,16 @@ fun ErrorMessage(
     modifier: Modifier = Modifier,
     onClickRetry: () -> Unit
 ) {
-    Row(
-        modifier = modifier.padding(10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = message,
             color = MaterialTheme.colorScheme.error,
-            modifier = Modifier.weight(1f),
-            maxLines = 2
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis
         )
         OutlinedButton(onClick = onClickRetry) {
             Text(text = stringResource(id = R.string.strRetry))
