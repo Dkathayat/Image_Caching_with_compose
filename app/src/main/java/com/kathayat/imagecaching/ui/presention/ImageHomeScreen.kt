@@ -3,7 +3,6 @@ package com.kathayat.imagecaching.ui.presention
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -39,27 +38,6 @@ fun InitilizeHomeScreen(
                 {
                     PageLoader(modifier = Modifier.fillMaxSize())
                 }
-            }
-
-            loadState.refresh is LoadState.Error -> {
-                val error = imagesPagingItems.loadState.refresh as LoadState.Error
-                ErrorMessage(
-                    modifier = Modifier.fillMaxHeight(),
-                    message = error.error.localizedMessage!!,
-                    onClickRetry = { retry() })
-            }
-
-
-            loadState.append is LoadState.Loading -> {
-                LoadingNextPageItem(modifier = Modifier)
-            }
-
-            loadState.append is LoadState.Error -> {
-                val error = imagesPagingItems.loadState.append as LoadState.Error
-                ErrorMessage(
-                    modifier = Modifier,
-                    message = error.error.localizedMessage!!,
-                    onClickRetry = { retry() })
             }
 
             else -> {
@@ -98,45 +76,34 @@ fun ImageHomeScreen(
                 )
                 Log.d("ImageUrls", imagesPagingItems[index]!!.urls.toString())
             }
-//            imagesPagingItems.apply {
-//                when {
-//                    loadState.refresh is LoadState.Loading -> {
-//                        item(span = 1) {
-//                            Box(
-//                                modifier = Modifier.fillMaxSize(),
-//                                contentAlignment = Alignment.Center
-//                            )
-//                            {
-//                                PageLoader(modifier = Modifier.fillMaxSize())
-//                            }
-//                        }
-//                    }
-//
-//                    loadState.refresh is LoadState.Error -> {
-//                        val error = imagesPagingItems.loadState.refresh as LoadState.Error
-//                        item {
-//                            ErrorMessage(
-//                                modifier = Modifier.fillMaxSize(),
-//                                message = error.error.localizedMessage!!,
-//                                onClickRetry = { retry() })
-//                        }
-//                    }
-//
-//                    loadState.append is LoadState.Loading -> {
-//                        item { LoadingNextPageItem(modifier = Modifier) }
-//                    }
-//
-//                    loadState.append is LoadState.Error -> {
-//                        val error = imagesPagingItems.loadState.append as LoadState.Error
-//                        item {
-//                            ErrorMessage(
-//                                modifier = Modifier,
-//                                message = error.error.localizedMessage!!,
-//                                onClickRetry = { retry() })
-//                        }
-//                    }
-//                }
-//            }
+            imagesPagingItems.apply {
+                when {
+
+                    loadState.refresh is LoadState.Error -> {
+                        val error = imagesPagingItems.loadState.refresh as LoadState.Error
+                        item {
+                            ErrorMessage(
+                                modifier = Modifier.fillMaxSize(),
+                                message = error.error.localizedMessage!!,
+                                onClickRetry = { retry() })
+                        }
+                    }
+
+                    loadState.append is LoadState.Loading -> {
+                        item { LoadingNextPageItem(modifier = Modifier) }
+                    }
+
+                    loadState.append is LoadState.Error -> {
+                        val error = imagesPagingItems.loadState.append as LoadState.Error
+                        item {
+                            ErrorMessage(
+                                modifier = Modifier,
+                                message = error.error.localizedMessage!!,
+                                onClickRetry = { retry() })
+                        }
+                    }
+                }
+            }
         }
     }
 }
